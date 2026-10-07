@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Same same, but different? Waste terms that get mixed up</title>
+<meta name="description" content="Recyclable or recycled content? Upcycling or downcycling? A 10-question quiz on waste and circularity terms that often get mixed up, each with a real-world example and a short explanation.">
+<meta name="author" content="Md Riajul Islam">
+
+<!-- Link previews: LinkedIn, Facebook, WhatsApp, Slack, X -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Same same, but different?">
+<meta property="og:title" content="Same same, but different? A 10-question quiz on waste terms">
+<meta property="og:description" content="Recyclable or recycled content? Upcycling or downcycling? Ten real-world examples, ten quick explanations. How many can you get right?">
+<meta property="og:image" content="https://placehold.co/1200x627/F4C542/1B2A3A.png?text=Same+same,+but+different%3F">
+<meta property="og:image:alt" content="Same same, but different? A quiz on waste terms that get mixed up">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Same same, but different? A 10-question quiz on waste terms">
+<meta name="twitter:description" content="Ten real-world examples, ten quick explanations. How many can you get right?">
+<meta name="twitter:image" content="https://placehold.co/1200x627/F4C542/1B2A3A.png?text=Same+same,\nbut+different%3F&amp;font=poppins">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --paper: #E7ECE8; --ink: #1B2A3A; --denim: #2F4E8C; --tag: #F4C542; --good: #2E7D5B; --bad: #B8432F; --muted: #5A6B78; --white: #FBFCFB; --track: #C9D2CC; --on-tag: #1B2A3A; }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper: #14202B; --ink: #E6ECE8; --denim: #8FAEE8; --good: #4FB384; --bad: #E0705C; --muted: #9AAAB5; --white: #1E2C38; --track: #33424F; }
+  }
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); background: var(--paper); }
+  * { box-sizing: border-box; margin: 0; }
+  [hidden] { display: none !important; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  body { background: var(--paper); color: var(--ink); font: 400 17px/1.55 "Figtree", system-ui, sans-serif; min-height: 100vh; padding: 32px 20px 48px; }
+  main { max-width: 620px; margin: 0 auto; }
+  main.wide { max-width: 980px; }
+  h1, .term, .stamp, .score-num, .rank-name { font-family: "Bricolage Grotesque", "Figtree", sans-serif; }
+  h1 { font-size: clamp(2.3rem, 8vw, 3.6rem); line-height: 1.02; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 18px; }
+  p { max-width: 60ch; }
+  .lede { font-size: 1.1rem; color: var(--muted); margin-bottom: 28px; }
+  .pairs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .pairs span { background: var(--white); border: 1.5px solid var(--ink); border-radius: 999px; padding: 4px 12px; font-size: 0.88rem; font-weight: 500; }
+  button { font: inherit; cursor: pointer; color: inherit; }
+  button:focus-visible { outline: 3px solid var(--denim); outline-offset: 3px; }
+  .primary { background: var(--ink); color: var(--white); border: none; border-radius: 10px; padding: 14px 26px; font-weight: 600; font-size: 1rem; }
+  .primary:hover { background: var(--denim); }
+  .secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--white); color: var(--ink); border: 2px solid var(--ink); border-radius: 10px; padding: 12px 20px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: transform 0.12s, box-shadow 0.12s; }
+  .secondary:hover { box-shadow: 3px 3px 0 var(--ink); transform: translate(-1px, -1px); }
+  .secondary:focus-visible { outline: 3px solid var(--denim); outline-offset: 3px; }
+  .link-btn { background: none; border: none; color: var(--denim); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; padding: 8px; }
+  .link-btn:hover { color: var(--ink); }
+
+  /* progress */
+  .progress { display: flex; gap: 6px; margin-bottom: 22px; }
+  .progress i { flex: 1; height: 6px; border-radius: 3px; background: var(--track); transition: background 0.35s ease; }
+  .progress i.done-good { background: var(--good); }
+  .progress i.done-bad { background: var(--bad); }
+  .progress i.now { background: var(--ink); }
+  .count { font-size: 0.9rem; color: var(--muted); margin-bottom: 8px; }
+
+  /* question tag */
+  .tag { position: relative; background: var(--tag); color: var(--on-tag); border-radius: 8px 22px 22px 8px; padding: 28px 26px 30px 58px; margin: 6px 0 22px; transform: rotate(-1.2deg); box-shadow: 3px 4px 0 var(--ink); border: 2px solid var(--ink); }
+  .tag::before { content: ""; position: absolute; left: 20px; top: 50%; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); }
+  .tag .q-label { font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
+  .tag .scenario { font-size: 1.2rem; line-height: 1.4; font-weight: 500; }
+  .stamp { position: absolute; right: 16px; bottom: -18px; padding: 4px 14px; border: 3px solid currentColor; border-radius: 6px; font-weight: 800; font-size: 1.15rem; background: var(--white); transform: rotate(-7deg) scale(1); opacity: 1; transition: transform 0.25s cubic-bezier(.2,1.6,.4,1), opacity 0.2s; }
+  .stamp.hidden { opacity: 0; transform: rotate(-7deg) scale(1.6); }
+  .stamp.good { color: var(--good); }
+  .stamp.bad { color: var(--bad); }
+
+  .ask { font-weight: 600; margin: 26px 0 12px; }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .opt { background: var(--white); border: 2px solid var(--ink); border-radius: 12px; padding: 18px 14px; text-align: center; }
+  .opt .term { display: block; font-size: 1.2rem; font-weight: 600; line-height: 1.2; }
+  .opt:hover:not(:disabled) { box-shadow: 3px 3px 0 var(--ink); transform: translate(-1px,-1px); }
+  .opt:disabled { cursor: default; }
+  .opt.is-right { background: var(--good); border-color: var(--good); color: var(--white); animation: pop 0.45s cubic-bezier(.2,1.5,.4,1); }
+  .opt.is-wrong { background: var(--bad); border-color: var(--bad); color: var(--white); animation: shake 0.45s ease; }
+  .opt.faded { opacity: 0.45; }
+  .explain { margin-top: 22px; background: var(--white); border-left: 4px solid var(--denim); border-radius: 0 12px 12px 0; padding: 18px 20px; animation: rise 0.35s ease-out both; }
+  .explain p + p { margin-top: 10px; }
+  .explain strong { font-weight: 600; }
+  .next-row { margin-top: 20px; display: flex; justify-content: flex-end; animation: rise 0.35s 0.1s ease-out both; }
+  .tag.wobble { animation: wobble 0.5s ease; }
+
+  /* results: score card */
+  main.results { max-width: 620px; }
+  .score-card { background: var(--white); border: 2px solid var(--ink); border-radius: 18px; box-shadow: 4px 5px 0 var(--ink); padding: 22px 22px 18px; text-align: center; margin-bottom: 28px; }
+  .score-card p { margin-left: auto; margin-right: auto; }
+  .eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .gauge { position: relative; width: min(220px, 64vw); margin: 0 auto; }
+  .gauge svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .gauge-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
+  .score-num { font-size: 3.5rem; font-weight: 800; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .score-num small { font-size: 0.42em; color: var(--muted); font-weight: 600; letter-spacing: 0; }
+  .gauge-sub { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+  .gauge-hint { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+  .seg { fill: none; stroke-width: 14; stroke-linecap: round; cursor: pointer; transform-origin: 110px 110px; transition: stroke-width 0.15s; animation: seg-in 0.4s cubic-bezier(.2,1.5,.4,1) both; }
+  .seg.good { stroke: var(--good); }
+  .seg.bad { stroke: var(--bad); }
+  .seg:hover { stroke-width: 19; }
+  .rank-tag { position: relative; display: inline-block; background: var(--tag); color: var(--on-tag); border: 2px solid var(--ink); border-radius: 6px 18px 18px 6px; box-shadow: 3px 3px 0 var(--ink); padding: 9px 20px 10px 40px; margin: 14px 0 12px; transform: rotate(-2deg); animation: stamp-in 0.45s cubic-bezier(.2,1.6,.4,1) both; }
+  .rank-tag::before { content: ""; position: absolute; left: 14px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: var(--white); border: 2px solid var(--ink); }
+  .rank-label { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .rank-name { display: block; font-size: 1.4rem; font-weight: 800; line-height: 1.15; }
+  .verdict { font-size: 1.05rem; line-height: 1.5; max-width: 36ch; margin-bottom: 16px; }
+  .ladder { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 0 0 8px; }
+  .ladder li { border: 1.5px solid var(--track); border-radius: 10px; padding: 7px 4px; font-size: 0.74rem; line-height: 1.2; color: var(--muted); display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+  .ladder .l-name { font-weight: 600; }
+  .ladder li.reached { border-color: var(--good); color: var(--good); }
+  .ladder li.current { background: var(--ink); border-color: var(--ink); color: var(--white); }
+  .nudge { font-size: 0.92rem; color: var(--muted); max-width: 38ch; margin-bottom: 18px; }
+  .nudge strong { color: var(--ink); font-weight: 600; }
+  .share { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .share .primary, .share .secondary { padding: 12px 10px; font-size: 0.95rem; }
+  .share-hint { font-size: 0.82rem; color: var(--muted); margin-top: 8px; min-height: 1.3em; }
+  .share-hint.ok { color: var(--good); font-weight: 600; }
+  .copy-fallback { width: 100%; margin-top: 8px; font: inherit; font-size: 0.85rem; padding: 8px; border: 1.5px solid var(--ink); border-radius: 8px; background: var(--paper); color: var(--ink); }
+  .more { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 16px; padding-top: 16px; border-top: 1.5px solid var(--track); }
+  .more .secondary { width: 100%; }
+
+  /* results: tabs, review, hierarchy */
+  .panel { min-width: 0; }
+  .tabs { display: flex; gap: 4px; background: var(--white); border: 2px solid var(--ink); border-radius: 12px; padding: 4px; margin-bottom: 16px; }
+  .tabs [role="tab"] { flex: 1; background: none; border: none; border-radius: 8px; padding: 9px 12px; font-weight: 600; color: var(--muted); }
+  .tabs [role="tab"]:hover { color: var(--ink); }
+  .tabs [role="tab"][aria-selected="true"] { background: var(--ink); color: var(--white); }
+  .rv-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+  .rv-hint { font-size: 0.92rem; color: var(--muted); }
+  .filter { display: flex; gap: 6px; }
+  .filter button { background: var(--white); border: 1.5px solid var(--ink); border-radius: 999px; padding: 4px 12px; font-size: 0.88rem; font-weight: 500; }
+  .filter button[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+  .filter button:disabled { opacity: 0.45; cursor: default; }
+  .rv-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .rv-item { background: var(--white); border: 2px solid var(--ink); border-radius: 12px; outline: 3px solid transparent; outline-offset: 3px; scroll-margin: 16px; }
+  .rv-item.open { box-shadow: 3px 3px 0 var(--ink); }
+  .rv-item.flash { animation: flash 1.2s ease; }
+  .rv-head { width: 100%; display: flex; align-items: center; gap: 12px; background: none; border: none; border-radius: 10px; padding: 10px 14px; text-align: left; }
+  .rv-mark { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; color: #FBFCFB; }
+  .good .rv-mark { background: var(--good); }
+  .bad .rv-mark { background: var(--bad); }
+  .rv-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .rv-term { font-weight: 600; line-height: 1.3; }
+  .rv-num { color: var(--muted); font-weight: 500; margin-right: 6px; }
+  .rv-scn { font-size: 0.9rem; color: var(--muted); line-height: 1.4; }
+  .rv-item:not(.open) .rv-scn { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rv-chev { flex: none; width: 20px; height: 20px; color: var(--muted); transition: transform 0.2s; }
+  .rv-item.open .rv-chev { transform: rotate(180deg); }
+  .rv-body { padding: 0 16px 14px 54px; font-size: 0.95rem; }
+  .rv-body p { max-width: none; }
+  .rv-body p + p { margin-top: 8px; }
+  .rv-pick { color: var(--bad); font-weight: 600; }
+  .hier-intro { color: var(--muted); margin-bottom: 14px; }
+  .hierarchy { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 8px; }
+  .level { width: var(--w); border: 2px solid var(--ink); border-radius: 10px; padding: 10px 14px; background: var(--bg); color: var(--fg, var(--ink)); text-align: center; font-weight: 600; }
+  .level[aria-expanded="true"] { box-shadow: 3px 3px 0 var(--ink); }
+  .level-detail { display: none; font-weight: 400; font-size: 0.95rem; margin-top: 6px; text-align: left; }
+  .level[aria-expanded="true"] .level-detail { display: block; }
+  .end-label { text-align: center; font-size: 0.85rem; color: var(--muted); margin: 0 auto 8px; }
+  .end-label.last { margin: 0 auto 16px; }
+  .note { font-size: 0.85rem; color: var(--muted); }
+
+  /* credit */
+  .byline { font-size: 0.95rem; color: var(--muted); margin: -6px 0 18px; }
+  .byline strong, .credit strong { color: var(--ink); font-weight: 600; }
+  .credit { margin-top: 32px; padding-top: 16px; border-top: 1.5px solid var(--track); font-size: 0.9rem; color: var(--muted); }
+  .contact { display: inline-flex; flex-wrap: wrap; gap: 4px 14px; margin-left: 10px; }
+  .contact a { color: var(--denim); font-weight: 500; text-underline-offset: 3px; overflow-wrap: anywhere; }
+  .contact a:hover { color: var(--ink); }
+  .contact a:focus-visible { outline: 3px solid var(--denim); outline-offset: 2px; border-radius: 2px; }
+
+  /* opening page */
+  .hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px; align-items: center; margin-bottom: 36px; }
+  .hero .lede { margin-bottom: 26px; }
+  .primary.big { padding: 16px 32px; font-size: 1.05rem; }
+  .ring-wrap { margin: 0; text-align: center; }
+  .ring-wrap svg { width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto; }
+  .ring-track { fill: none; stroke: var(--track); stroke-width: 18; }
+  .ring-arc { fill: none; stroke: var(--good); stroke-width: 18; stroke-linecap: round; transform: rotate(-90deg); transform-origin: 120px 120px; animation: fill-arc 1.6s 0.3s cubic-bezier(.3,.8,.3,1) both; }
+  .orbit { fill: none; stroke: var(--track); stroke-width: 1.5; stroke-dasharray: 2 6; }
+  .ring-big { font: 800 44px "Bricolage Grotesque", sans-serif; fill: var(--ink); letter-spacing: -1px; }
+  .ring-small { font: 500 13px "Figtree", sans-serif; fill: var(--muted); }
+  .ring-wrap figcaption { font-size: 0.92rem; color: var(--muted); max-width: 34ch; margin: 12px auto 0; }
+  .live { background: var(--white); border: 2px solid var(--ink); border-radius: 18px; padding: 22px 24px 18px; margin-bottom: 32px; box-shadow: 4px 5px 0 var(--ink); }
+  .live-head { display: flex; align-items: center; gap: 10px; font-weight: 600; margin-bottom: 16px; }
+  .pulse { width: 10px; height: 10px; border-radius: 50%; background: var(--bad); position: relative; flex: none; }
+  .pulse::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--bad); animation: ping 1.6s ease-out infinite; }
+  .live-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .stat-num { display: block; font: 800 clamp(1.9rem, 5vw, 2.6rem)/1.05 "Bricolage Grotesque", sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .stat-label { display: block; font-size: 0.95rem; color: var(--muted); margin-top: 4px; max-width: 34ch; }
+  .truck-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 12px; min-height: 20px; }
+  .truck-row svg { width: 26px; height: 18px; color: var(--bad); }
+  .truck-row svg.new { animation: drop-in 0.4s cubic-bezier(.2,1.5,.4,1); }
+  .sources { font-size: 0.8rem; color: var(--muted); margin-top: 16px; padding-top: 12px; border-top: 1.5px solid var(--track); max-width: none; }
+  .pairs-title { font-weight: 600; margin-bottom: 10px; }
+
+  /* effects */
+  .confetti { position: fixed; pointer-events: none; z-index: 50; border-radius: 2px; }
+  .plus-one { position: fixed; pointer-events: none; z-index: 51; font: 800 1.4rem "Bricolage Grotesque", sans-serif; color: var(--good); }
+  @keyframes fill-arc { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
+  @keyframes ping { from { transform: scale(0.5); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
+  @keyframes drop-in { from { transform: translateY(-10px) scale(0.6); opacity: 0; } to { transform: none; opacity: 1; } }
+  @keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.07); } 100% { transform: scale(1); } }
+  @keyframes shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-8px); } 40% { transform: translateX(7px); } 60% { transform: translateX(-5px); } 80% { transform: translateX(3px); } }
+  @keyframes wobble { 0%, 100% { transform: rotate(-1.2deg); } 30% { transform: rotate(-3deg); } 60% { transform: rotate(0.6deg); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes seg-in { from { opacity: 0; transform: scale(0.82); } to { opacity: 1; transform: none; } }
+  @keyframes stamp-in { from { opacity: 0; transform: rotate(-8deg) scale(1.5); } to { opacity: 1; transform: rotate(-2deg) scale(1); } }
+  @keyframes flash { 20%, 65% { outline-color: var(--denim); } }
+
+  /* small screens */
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; gap: 24px; }
+    .ring-wrap svg { max-width: 240px; }
+    .live-grid { grid-template-columns: 1fr; gap: 18px; }
+  }
+  @media (max-width: 460px) {
+    .options { grid-template-columns: 1fr; }
+    .tag { padding-left: 50px; }
+    .level { width: 100% !important; }
+    .share { grid-template-columns: 1fr; }
+    .rv-body { padding-left: 16px; }
+    .contact { display: flex; margin-left: 0; margin-top: 2px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stamp, .opt, .progress i, .seg, .secondary, .rv-chev { transition: none !important; }
+    .opt.is-right, .opt.is-wrong, .tag.wobble, .explain, .next-row, .ring-arc, .pulse::after, .truck-row svg.new, .seg, .rank-tag, .rv-item.flash { animation: none !important; }
+    .opt:hover:not(:disabled), .secondary:hover { transform: none; }
+  }
+
+  /* desktop layout */
+  @media (min-width: 900px) {
+    body { padding: 16px 28px 18px; }
+    main { max-width: 860px; }
+    h1 { font-size: clamp(2rem, 7vh, 3.1rem); margin-bottom: 10px; }
+    main.wide { max-width: 1080px; display: grid; grid-template-columns: 1.1fr 0.9fr; column-gap: 44px; row-gap: 14px; align-items: start; }
+    main.wide .hero { display: contents; }
+    main.wide .hero > div { grid-column: 1; grid-row: 1; align-self: center; }
+    main.wide .hero .lede { margin-bottom: 16px; font-size: 1.02rem; }
+    main.wide .byline { margin: -2px 0 12px; }
+    main.wide .primary.big { padding: 12px 28px; }
+    main.wide .ring-wrap { grid-column: 2; grid-row: 1; align-self: center; }
+    main.wide .ring-wrap svg { max-width: min(210px, 28vh); }
+    main.wide .ring-wrap figcaption { margin-top: 6px; font-size: 0.88rem; }
+    main.wide .live { grid-column: 1; grid-row: 2 / span 2; margin: 0; padding: 16px 20px 14px; }
+    main.wide .live-head { margin-bottom: 10px; }
+    main.wide .sources { margin-top: 10px; padding-top: 8px; }
+    main.wide .pairs-title { grid-column: 2; grid-row: 2; margin: 0; align-self: end; }
+    main.wide .pairs { grid-column: 2; grid-row: 3; margin: 0; align-self: start; }
+    .progress { margin-bottom: 12px; }
+    .count { margin-bottom: 4px; }
+    .tag { padding: 18px 24px 20px 56px; margin: 4px 0 14px; }
+    .tag .scenario { font-size: 1.12rem; }
+    .ask { margin: 22px 0 10px; }
+    .opt { padding: 12px 14px; }
+    .explain { margin-top: 14px; padding: 12px 18px; }
+    .explain p { max-width: none; }
+    .next-row { margin-top: 12px; }
+    main.results { max-width: 1080px; display: grid; grid-template-columns: 370px 1fr; column-gap: 40px; align-items: start; }
+    main.results > .progress { grid-column: 1 / -1; }
+    main.results > .score-card { margin-bottom: 0; }
+    main.results > .credit { grid-column: 1 / -1; margin-top: 24px; }
+  }
+</style>
+</head>
+<body>
+<main id="app" aria-live="polite"></main>
+
+<script>
+// Works on any address: uses the page's own URL for sharing
+const SITE_URL = location.origin + location.pathname;
+
+const questions = [
+  {
+    scenario: "A garment factory sends its cutting-room scraps straight to a recycler.",
+    ask: "What kind of waste is this?",
+    options: ["Pre-consumer", "Post-consumer"],
+    answer: 0,
+    right: "Pre-consumer waste is created during production, before a product ever reaches a customer. Think fabric offcuts, rejected rolls or deadstock.",
+    other: "Post-consumer waste is what's left after someone has used and discarded a product, like clothes dropped into a collection bin. Pre-consumer waste is usually cleaner and easier to sort, which makes it a strong starting point for recycling."
+  },
+  {
+    scenario: "Old cotton T-shirts are shredded and pressed into insulation panels for buildings.",
+    ask: "Is this upcycling or downcycling?",
+    options: ["Upcycling", "Downcycling"],
+    answer: 1,
+    right: "Downcycling turns a material into something of lower quality or value. Shredding shortens the fibres, and the insulation is much harder to recycle again later.",
+    other: "Upcycling does the opposite: it creates something of equal or higher value, such as a new jacket made from unused fabric. Downcycling still beats landfill, but it often marks the end of the road for that material."
+  },
+  {
+    scenario: "A T-shirt label says it is made with 30% recycled polyester.",
+    ask: "What is the label telling you?",
+    options: ["It's recyclable", "It has recycled content"],
+    chip: "Recyclable / Recycled content",
+    answer: 1,
+    right: "Recycled content means part of the product was made from material that has already been recycled.",
+    other: "Recyclable only means a product could be recycled, if the right collection, sorting and processing exist where it ends up. Plenty of items labelled recyclable never actually get recycled. The two claims say very different things."
+  },
+  {
+    scenario: "Plastic drinks bottles are recycled into polyester yarn for a fleece jacket.",
+    ask: "Which type of recycling is this?",
+    options: ["Closed-loop", "Open-loop"],
+    answer: 1,
+    right: "Open-loop recycling turns a material into a different kind of product. The bottle leaves the bottle system and becomes a textile.",
+    other: "Closed-loop recycling keeps a material in the same kind of product, such as bottle to bottle or fibre to fibre (old garments into new textile fibres). Open-loop isn't bad, but the jacket is usually harder to recycle than the bottle was."
+  },
+  {
+    scenario: "Polyester fabric is broken down into its molecular building blocks, which are then used to make new polyester.",
+    ask: "Which process is this?",
+    options: ["Mechanical recycling", "Chemical recycling"],
+    answer: 1,
+    right: "Chemical recycling breaks a material down at the molecular level, so the output can be close to the quality of new material.",
+    other: "Mechanical recycling shreds, melts or pulls a material apart without changing its chemical structure. It tends to use less energy and cost less, but the quality usually drops a little each time."
+  },
+  {
+    scenario: "A packaging label says it will break down into nutrient-rich material within a set time in an industrial composting facility.",
+    ask: "Which claim is this?",
+    options: ["Biodegradable", "Compostable"],
+    answer: 1,
+    right: "Compostable means a material breaks down into compost within a defined timeframe under specific conditions, usually checked against a standard such as EN 13432.",
+    other: "Biodegradable only means microorganisms will break it down eventually. It doesn't say how long that takes or under what conditions, which is why the word on its own can be misleading."
+  },
+  {
+    scenario: "A brand redesigns its cutting patterns so less fabric is left over in the first place.",
+    ask: "Is this waste prevention or waste diversion?",
+    options: ["Waste prevention", "Waste diversion"],
+    answer: 0,
+    right: "Waste prevention stops waste from being created at all. It sits at the very top of the waste hierarchy.",
+    other: "Waste diversion deals with waste that already exists, keeping it out of landfill or incineration through reuse, recycling or composting. Both matter, but preventing waste is always the better outcome."
+  },
+  {
+    scenario: "A brand designs its jeans so the metal buttons and rivets can be removed easily, making the denim simpler to recycle later.",
+    ask: "Which way of thinking does this reflect?",
+    options: ["Linear economy", "Circular economy"],
+    answer: 1,
+    right: "A circular economy plans for what happens to a product after use, so its materials can keep circulating through repair, reuse or recycling.",
+    other: "A linear economy follows a take, make, use and throw away model, where end of life is rarely considered at the design stage. Designing for easy disassembly is one of the simplest ways to move away from it."
+  },
+  {
+    scenario: "A law requires clothing brands to pay for the collection and sorting of the garments they put on the market.",
+    ask: "What is this called?",
+    options: ["Voluntary take-back scheme", "Extended Producer Responsibility"],
+    chip: "Take-back scheme / EPR",
+    answer: 1,
+    right: "Extended Producer Responsibility (EPR) makes producers legally and financially responsible for their products after they are thrown away. France has had an EPR scheme for textiles since 2007.",
+    other: "A voluntary take-back scheme is one a brand chooses to run, such as in-store collection boxes. These can be useful, but they depend on the brand's own commitment, while EPR is a legal requirement that applies to everyone in the market."
+  },
+  {
+    scenario: "Mixed waste is burned in a plant that turns the heat into electricity.",
+    ask: "How should this be described?",
+    options: ["Recycling", "Energy recovery"],
+    answer: 1,
+    right: "This is energy recovery. Some value is captured, but the material itself is gone for good.",
+    other: "Recycling keeps the material in use by turning it into new products. Energy recovery sits below recycling in the waste hierarchy, so it's worth being careful when it gets described as a recycling solution."
+  }
+];
+
+const levels = [
+  { name: "Prevention", w: "100%", bg: "#2E7D5B", fg: "#FBFCFB", text: "Avoid creating waste in the first place, for example through better design, accurate ordering or efficient cutting." },
+  { name: "Preparing for reuse", w: "88%", bg: "#5E9E79", fg: "#FBFCFB", text: "Check, clean or repair products so they can be used again in their original form." },
+  { name: "Recycling", w: "76%", bg: "#F4C542", fg: "#1B2A3A", text: "Turn waste into material for new products." },
+  { name: "Other recovery", w: "64%", bg: "#F1D894", fg: "#1B2A3A", text: "Get some value from waste that can't be recycled, such as energy from incineration." },
+  { name: "Disposal", w: "52%", bg: "#D9DEDA", fg: "#1B2A3A", text: "Landfill or incineration without energy recovery. The last resort." }
+];
+
+// Ranks, highest first
+const tiers = [
+  { min: 10, name: "Closed-loop legend", msg: "A perfect score. You clearly know your way around this vocabulary." },
+  { min: 8, name: "Circular thinker", msg: "Really solid. Just one or two that are easy to mix up." },
+  { min: 5, name: "In the loop", msg: "A good start. Several of these trip up people who work in the field too." },
+  { min: 0, name: "First stitch", msg: "These pairs are genuinely confusing, and now you know the difference. Look through your answers, then give it another go." }
+];
+const tiersAsc = [...tiers].reverse();
+
+const app = document.getElementById("app");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const colours = ["#2E7D5B", "#F4C542", "#2F4E8C", "#B8432F", "#1B2A3A"];
+
+function burst(el, count) {
+  if (reduceMotion || !el.isConnected) return;
+  const r = el.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement("span");
+    p.className = "confetti";
+    const w = 6 + Math.random() * 8, h = 4 + Math.random() * 6;
+    p.style.cssText = `left:${cx}px;top:${cy}px;width:${w}px;height:${h}px;background:${colours[i % colours.length]}`;
+    document.body.appendChild(p);
+    const angle = Math.random() * Math.PI * 2, dist = 60 + Math.random() * 120;
+    const dx = Math.cos(angle) * dist, dy = Math.sin(angle) * dist + 40;
+    const spin = Math.random() * 540 - 270;
+    p.animate([
+      { transform: "translate(-50%,-50%) rotate(0deg)", opacity: 1 },
+      { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) rotate(${spin}deg)`, opacity: 0 }
+    ], { duration: 900 + Math.random() * 400, easing: "cubic-bezier(.15,.7,.4,1)" }).onfinish = () => p.remove();
+  }
+}
+
+function plusOne(el) {
+  if (reduceMotion) return;
+  const r = el.getBoundingClientRect();
+  const t = document.createElement("span");
+  t.className = "plus-one";
+  t.textContent = "+1";
+  t.style.left = (r.left + r.width / 2 - 12) + "px";
+  t.style.top = (r.top - 10) + "px";
+  document.body.appendChild(t);
+  t.animate([
+    { transform: "translateY(0)", opacity: 1 },
+    { transform: "translateY(-40px)", opacity: 0 }
+  ], { duration: 900, easing: "ease-out" }).onfinish = () => t.remove();
+}
+
+// Round state
+let deck = [];      // question indices in this round
+let current = 0;    // position in deck
+let results = [];   // { qi, picked, correct }
+let practice = false;
+
+const allIndices = () => questions.map((_, i) => i);
+
+function startRound(indices, isPractice) {
+  deck = indices;
+  current = 0;
+  results = [];
+  practice = isPractice;
+  renderQuestion();
+  window.scrollTo({ top: 0 });
+}
+
+function esc(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+// Live estimates, based on published annual figures
+const VALUE_LOST_PER_SECOND = 25.4e12 / 31557600; // Circularity Gap Report 2026: EUR 25.4 trillion a year
+const CIRCULARITY_RATE = 6.9; // Circularity Gap Report 2025
+let liveTimer = null, orbitFrame = null;
+
+function stopLive() {
+  clearInterval(liveTimer);
+  cancelAnimationFrame(orbitFrame);
+  liveTimer = null; orbitFrame = null;
+}
+
+const truckSvg = `<svg viewBox="0 0 26 18" aria-hidden="true"><path fill="currentColor" d="M1 3h14v10H1zM16 6h5l4 4v3h-9z"/><circle cx="6" cy="15" r="2.4" fill="currentColor"/><circle cx="20" cy="15" r="2.4" fill="currentColor"/></svg>`;
+
+function ringSvg() {
+  const r = 92, c = 2 * Math.PI * r, arc = c * CIRCULARITY_RATE / 100;
+  let dots = "";
+  for (let i = 0; i < 9; i++) {
+    const ang = (i / 9) * Math.PI * 2;
+    dots += `<circle class="fibre" r="${3 + (i % 3)}" fill="${colours[i % colours.length]}" cx="${(120 + 112 * Math.cos(ang)).toFixed(2)}" cy="${(120 + 112 * Math.sin(ang)).toFixed(2)}"/>`;
+  }
+  return `
+  <svg viewBox="0 0 240 240" role="img" aria-label="Ring chart: ${CIRCULARITY_RATE}% of materials entering the global economy are recycled materials">
+    <circle class="orbit" cx="120" cy="120" r="112"/>
+    <circle class="ring-track" cx="120" cy="120" r="${r}"/>
+    <circle class="ring-arc" cx="120" cy="120" r="${r}" style="--len:${arc.toFixed(1)}" stroke-dasharray="${arc.toFixed(1)} ${c.toFixed(1)}"/>
+    <text class="ring-big" x="120" y="124" text-anchor="middle">${CIRCULARITY_RATE}%</text>
+    <text class="ring-small" x="120" y="146" text-anchor="middle">circular</text>
+    <g id="fibres">${dots}</g>
+  </svg>`;
+}
+
+function startLive() {
+  const started = performance.now();
+  const trucksEl = document.getElementById("trucks");
+  const valueEl = document.getElementById("value");
+  const row = document.getElementById("truckRow");
+  const euro = new Intl.NumberFormat("en-GB", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+  let shownTrucks = 0;
+
+  liveTimer = setInterval(() => {
+    const secs = (performance.now() - started) / 1000;
+    valueEl.textContent = euro.format(secs * VALUE_LOST_PER_SECOND);
+    const trucks = Math.floor(secs);
+    if (trucks !== shownTrucks) {
+      shownTrucks = trucks;
+      trucksEl.textContent = trucks.toLocaleString("en-GB");
+      row.insertAdjacentHTML("beforeend", truckSvg);
+      if (!reduceMotion) row.lastElementChild.classList.add("new");
+      while (row.children.length > 24) row.firstElementChild.remove();
+    }
+  }, reduceMotion ? 1000 : 80);
+
+  if (reduceMotion) return;
+  const fibres = Array.from(document.querySelectorAll("#fibres .fibre"));
+  const speeds = fibres.map((_, i) => 0.00018 + (i % 4) * 0.00006);
+  const offsets = fibres.map((_, i) => (i / fibres.length) * Math.PI * 2);
+  const tick = (t) => {
+    fibres.forEach((f, i) => {
+      const a = offsets[i] + t * speeds[i];
+      f.setAttribute("cx", (120 + 112 * Math.cos(a)).toFixed(2));
+      f.setAttribute("cy", (120 + 112 * Math.sin(a)).toFixed(2));
+    });
+    orbitFrame = requestAnimationFrame(tick);
+  };
+  orbitFrame = requestAnimationFrame(tick);
+}
+
+const creditHtml = `Created by <strong>Riajul</strong> <span class="contact"><a href="https://www.linkedin.com/in/riajuull/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:riajul.i@reverseresources.net">riajul.i@reverseresources.net</a></span>`;
+
+function renderIntro() {
+  app.className = "wide";
+  const chipText = q => q.chip || `${q.options[0]} / ${q.options[1]}`;
+  const chips = questions.map(q => `<span>${esc(chipText(q))}</span>`).join("");
+  app.innerHTML = `
+    <section class="hero">
+      <div>
+        <h1>Same same, but different?</h1>
+        <p class="byline">${creditHtml}</p>
+        <p class="lede">Sustainability conversations are full of terms that sound alike but mean very different things. Read each real-world example and pick the term that fits. Ten quick questions, each with a short explanation.</p>
+        <button class="primary big" id="start">Start the quiz</button>
+      </div>
+      <figure class="ring-wrap">
+        ${ringSvg()}
+        <figcaption>Only ${CIRCULARITY_RATE}% of the materials entering the global economy are recycled materials. The rest are newly extracted.</figcaption>
+      </figure>
+    </section>
+
+    <section class="live" aria-live="off">
+      <p class="live-head"><span class="pulse" aria-hidden="true"></span>Since you opened this page</p>
+      <div class="live-grid">
+        <div>
+          <span class="stat-num" id="trucks">0</span>
+          <span class="stat-label">garbage trucks' worth of textiles landfilled or burned worldwide</span>
+          <div class="truck-row" id="truckRow" aria-hidden="true"></div>
+        </div>
+        <div>
+          <span class="stat-num" id="value">€0</span>
+          <span class="stat-label">in value lost globally to the linear economy</span>
+        </div>
+      </div>
+      <p class="sources">Live estimates based on annual averages. Sources: Ellen MacArthur Foundation, A New Textiles Economy (2017), one garbage truck of textiles every second; Circle Economy, Circularity Gap Report 2025 (6.9% circularity) and 2026 (€25.4 trillion lost each year).</p>
+    </section>
+
+    <p class="pairs-title">Terms in this quiz</p>
+    <div class="pairs">${chips}</div>
+  `;
+  document.getElementById("start").onclick = () => startRound(allIndices(), false);
+  startLive();
+}
+
+function progressBar() {
+  return `<div class="progress" aria-hidden="true">${deck.map((_, i) => {
+    let cls = "";
+    if (i < results.length) cls = results[i].correct ? "done-good" : "done-bad";
+    else if (i === current) cls = "now";
+    return `<i class="${cls}"></i>`;
+  }).join("")}</div>`;
+}
+
+function renderQuestion() {
+  stopLive();
+  app.className = "";
+  const q = questions[deck[current]];
+  const label = practice ? `Practice round · ${current + 1} of ${deck.length}` : `Question ${current + 1} of ${deck.length}`;
+  app.innerHTML = `
+    ${progressBar()}
+    <p class="count">${label}</p>
+    <div class="tag">
+      <p class="q-label">The situation</p>
+      <p class="scenario">${esc(q.scenario)}</p>
+      <span class="stamp hidden" id="stamp"></span>
+    </div>
+    <p class="ask">${esc(q.ask)}</p>
+    <div class="options">
+      ${q.options.map((o, i) => `<button class="opt" data-i="${i}"><span class="term">${esc(o)}</span></button>`).join("")}
+    </div>
+    <div id="feedback"></div>
+  `;
+  app.querySelectorAll(".opt").forEach(btn => {
+    btn.onclick = () => choose(parseInt(btn.dataset.i, 10));
+  });
+  app.querySelector(".opt").focus({ preventScroll: true });
+}
+
+function choose(i) {
+  const q = questions[deck[current]];
+  const correct = i === q.answer;
+  results.push({ qi: deck[current], picked: i, correct });
+
+  app.querySelectorAll(".opt").forEach(btn => {
+    const idx = parseInt(btn.dataset.i, 10);
+    btn.disabled = true;
+    if (idx === q.answer) btn.classList.add("is-right");
+    else if (idx === i) btn.classList.add("is-wrong");
+    else btn.classList.add("faded");
+  });
+
+  const chosen = app.querySelector(`.opt[data-i="${i}"]`);
+  if (correct) { burst(chosen, 22); plusOne(chosen); }
+  else app.querySelector(".tag").classList.add("wobble");
+
+  const seg = app.querySelectorAll(".progress i")[current];
+  if (seg) seg.className = correct ? "done-good" : "done-bad";
+
+  const stamp = document.getElementById("stamp");
+  stamp.textContent = correct ? "Spot on" : "Not quite";
+  stamp.className = "stamp hidden " + (correct ? "good" : "bad");
+  requestAnimationFrame(() => requestAnimationFrame(() => stamp.classList.remove("hidden")));
+
+  const last = current === deck.length - 1;
+  document.getElementById("feedback").innerHTML = `
+    <div class="explain">
+      <p><strong>${esc(q.options[q.answer])}.</strong> ${esc(q.right)}</p>
+      <p>${esc(q.other)}</p>
+    </div>
+    <div class="next-row"><button class="primary" id="next">${last ? "See my score" : "Next question"}</button></div>
+  `;
+  const next = document.getElementById("next");
+  next.onclick = () => {
+    current++;
+    if (current < deck.length) renderQuestion(); else renderResults();
+    window.scrollTo({ top: 0 });
+  };
+  next.focus({ preventScroll: true });
+}
+
+/* ---------- results ---------- */
+
+const CHECK = `<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3.2 8.6l3 3 6.6-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const CROSS = `<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4.2 4.2l7.6 7.6M11.8 4.2l-7.6 7.6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>`;
+const CHEV = `<svg class="rv-chev" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+function gaugeSvg() {
+  const n = results.length, c = 110, r = 88;
+  const pt = a => {
+    const t = a * Math.PI / 180;
+    return `${(c + r * Math.cos(t)).toFixed(2)} ${(c + r * Math.sin(t)).toFixed(2)}`;
+  };
+  let segs = "";
+  results.forEach((res, i) => {
+    const cls = `seg ${res.correct ? "good" : "bad"}`;
+    const title = `<title>Question ${i + 1}: ${res.correct ? "correct" : "missed"}. Click to review.</title>`;
+    const style = `animation-delay:${i * 70}ms`;
+    if (n === 1) {
+      segs += `<circle class="${cls}" data-pos="0" cx="${c}" cy="${c}" r="${r}" style="${style}">${title}</circle>`;
+      return;
+    }
+    const span = 360 / n, gap = 13;
+    const a0 = -90 + i * span + gap / 2, a1 = -90 + (i + 1) * span - gap / 2;
+    const large = a1 - a0 > 180 ? 1 : 0;
+    segs += `<path class="${cls}" data-pos="${i}" d="M ${pt(a0)} A ${r} ${r} 0 ${large} 1 ${pt(a1)}" style="${style}">${title}</path>`;
+  });
+  return `<svg viewBox="0 0 220 220" aria-hidden="true"><circle class="orbit" cx="${c}" cy="${c}" r="106"/>${segs}</svg>`;
+}
+
+function selectTab(name) {
+  app.querySelectorAll('[role="tab"]').forEach(t => {
+    const on = t.dataset.tab === name;
+    t.setAttribute("aria-selected", String(on));
+    t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+  });
+}
+
+function setFilter(f) {
+  app.querySelectorAll(".filter button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === f)));
+  app.querySelectorAll(".rv-item").forEach(li => { li.hidden = f === "missed" && li.classList.contains("good"); });
+}
+
+function toggleItem(li, force) {
+  const open = force ?? !li.classList.contains("open");
+  li.classList.toggle("open", open);
+  li.querySelector(".rv-head").setAttribute("aria-expanded", String(open));
+  li.querySelector(".rv-body").hidden = !open;
+}
+
+function openReview(pos) {
+  const li = document.getElementById("rv-" + pos);
+  if (!li) return;
+  selectTab("review");
+  if (li.hidden) setFilter("all");
+  toggleItem(li, true);
+  li.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
+  li.classList.remove("flash");
+  void li.offsetWidth;
+  li.classList.add("flash");
+  li.querySelector(".rv-head").focus({ preventScroll: true });
+}
+
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch {}
+    ta.remove();
+    return ok;
+  }
+}
+
+async function copyScore(btn, score, total) {
+  const tier = tiers.find(t => score >= t.min);
+  const grid = results.map(r => (r.correct ? "🟩" : "🟥")).join("");
+  const text = `I scored ${score}/${total} on "Same same, but different?" ♻️\n${grid}\nRank: ${tier.name}\nHow many can you get right? ${SITE_URL}`;
+  const status = document.getElementById("copyStatus");
+  const old = app.querySelector(".copy-fallback");
+  if (old) old.remove();
+  if (await copyText(text)) {
+    btn.textContent = "Copied!";
+    status.textContent = "Copied. Paste it in the comments to share your score.";
+    status.classList.add("ok");
+    burst(btn, 14);
+    setTimeout(() => { btn.textContent = "Copy my score"; }, 2500);
+  } else {
+    status.classList.remove("ok");
+    status.textContent = "Couldn't copy automatically. Select the text below and copy it:";
+    const ta = document.createElement("textarea");
+    ta.className = "copy-fallback";
+    ta.readOnly = true;
+    ta.rows = 4;
+    ta.value = text;
+    status.after(ta);
+    ta.focus();
+    ta.select();
+  }
+}
+
+function renderResults() {
+  stopLive();
+  app.className = "results";
+  const total = deck.length;
+  const score = results.filter(r => r.correct).length;
+  const missedIdx = results.filter(r => !r.correct).map(r => r.qi);
+  const missed = missedIdx.length;
+  const countMs = reduceMotion ? 0 : 110 * (score + 1);
+
+  let middle;
+  if (practice) {
+    const left = total - score;
+    middle = `<p class="verdict">${score === total
+      ? "All fixed. Those terms are yours now."
+      : `You fixed ${score} of ${total}. Have another go at the ${left === 1 ? "one" : left} still tripping you up.`}</p>`;
+  } else {
+    const tier = tiers.find(t => score >= t.min);
+    const next = tiersAsc.find(t => t.min > score);
+    const ladder = tiersAsc.map((t, i) => {
+      const upper = i < tiersAsc.length - 1 ? tiersAsc[i + 1].min - 1 : total;
+      const range = t.min === upper ? `${upper}` : `${t.min}–${upper}`;
+      const state = t === tier ? "current" : (t.min < tier.min ? "reached" : "");
+      return `<li class="${state}"${t === tier ? ' aria-current="step"' : ""}><span class="l-name">${esc(t.name)}</span><span class="l-range">${range}</span></li>`;
+    }).join("");
+    const nudge = next
+      ? `Get ${next.min - score} more right next time to reach <strong>${esc(next.name)}</strong>.`
+      : "Top of the loop. Share your score and see who can match it.";
+    middle = `
+      <div class="rank-tag" style="animation-delay:${countMs}ms">
+        <span class="rank-label">Your rank</span>
+        <span class="rank-name">${esc(tier.name)}</span>
+      </div>
+      <p class="verdict">${esc(tier.msg)}</p>
+      <ol class="ladder" aria-label="Ranks">${ladder}</ol>
+      <p class="nudge">${nudge}</p>
+      <div class="share">
+        <button class="primary" id="copy">Copy my score</button>
+        <a class="secondary" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(SITE_URL)}" target="_blank" rel="noopener">Share on LinkedIn</a>
+      </div>
+      <p class="share-hint" id="copyStatus" role="status">Copies your score and a 🟩🟥 grid, ready to paste in the comments.</p>`;
+  }
+
+  const retryLabel = missed === 1
+    ? (practice ? "Retry the one still missed" : "Retry the one I missed")
+    : (practice ? `Retry the ${missed} still missed` : `Retry the ${missed} I missed`);
+
+  const items = results.map((r, pos) => {
+    const q = questions[r.qi];
+    return `
+      <li class="rv-item ${r.correct ? "good" : "bad"}" id="rv-${pos}">
+        <button class="rv-head" aria-expanded="false" aria-controls="rvb-${pos}">
+          <span class="rv-mark">${r.correct ? CHECK : CROSS}<span class="sr-only">${r.correct ? "Correct" : "Missed"}:</span></span>
+          <span class="rv-text">
+            <span class="rv-term"><span class="rv-num">${pos + 1}.</span>${esc(q.options[q.answer])}</span>
+            <span class="rv-scn">${esc(q.scenario)}</span>
+          </span>
+          ${CHEV}
+        </button>
+        <div class="rv-body" id="rvb-${pos}" hidden>
+          ${r.correct ? "" : `<p class="rv-pick">You picked ${esc(q.options[r.picked])}.</p>`}
+          <p>${esc(q.right)}</p>
+          <p>${esc(q.other)}</p>
+        </div>
+      </li>`;
+  }).join("");
+
+  const hier = levels.map(l => `
+    <button class="level" aria-expanded="false" style="--w:${l.w};--bg:${l.bg};--fg:${l.fg};">
+      ${esc(l.name)}
+      <span class="level-detail">${esc(l.text)}</span>
+    </button>`).join("");
+
+  app.innerHTML = `
+    ${progressBar()}
+    <section class="score-card" aria-label="Your score">
+      <p class="eyebrow">${practice ? "Practice round" : "Your score"}</p>
+      <div class="gauge">
+        ${gaugeSvg()}
+        <div class="gauge-center">
+          <p class="score-num"><span id="num">${reduceMotion ? score : 0}</span><small>/${total}</small></p>
+          <p class="gauge-sub">correct</p>
+        </div>
+      </div>
+      <p class="gauge-hint">Tap a segment to revisit that question</p>
+      ${middle}
+      <div class="more">
+        ${missed ? `<button class="secondary" id="retry">${retryLabel}</button>` : ""}
+        <button class="link-btn" id="again">${practice ? "Take the full quiz again" : "Take the quiz again"}</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="tabs" role="tablist" aria-label="Results details">
+        <button role="tab" id="tab-review" data-tab="review" aria-controls="panel-review" aria-selected="true">Your answers</button>
+        <button role="tab" id="tab-hier" data-tab="hier" aria-controls="panel-hier" aria-selected="false" tabindex="-1">Waste hierarchy</button>
+      </div>
+
+      <div role="tabpanel" id="panel-review" aria-labelledby="tab-review">
+        <div class="rv-top">
+          <p class="rv-hint">Tap a question to see the explanation again.</p>
+          <div class="filter" role="group" aria-label="Show">
+            <button data-f="all" aria-pressed="true">All ${total}</button>
+            <button data-f="missed" aria-pressed="false"${missed ? "" : " disabled"}>Missed ${missed}</button>
+          </div>
+        </div>
+        <ol class="rv-list">${items}</ol>
+      </div>
+
+      <div role="tabpanel" id="panel-hier" aria-labelledby="tab-hier" hidden>
+        <p class="hier-intro">Most of these terms map onto one simple idea. The higher up an option sits, the better it usually is for the environment. Tap a level to see what it means.</p>
+        <p class="end-label">Most preferred</p>
+        <div class="hierarchy">${hier}</div>
+        <p class="end-label last">Least preferred</p>
+        <p class="note">The hierarchy follows the order set out in the EU Waste Framework Directive. In practice, the best option can depend on the material and the local context.</p>
+      </div>
+    </section>
+
+    <p class="credit">${creditHtml}</p>
+  `;
+
+  app.querySelectorAll(".seg").forEach(s => s.addEventListener("click", () => openReview(parseInt(s.dataset.pos, 10))));
+  app.querySelectorAll(".rv-head").forEach(b => { b.onclick = () => toggleItem(b.closest(".rv-item")); });
+  app.querySelectorAll(".filter button").forEach(b => { b.onclick = () => setFilter(b.dataset.f); });
+
+  const tabs = Array.from(app.querySelectorAll('[role="tab"]'));
+  tabs.forEach((t, i) => {
+    t.onclick = () => selectTab(t.dataset.tab);
+    t.onkeydown = e => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const other = tabs[(i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+      selectTab(other.dataset.tab);
+      other.focus();
+    };
+  });
+
+  app.querySelectorAll(".level").forEach(btn => {
+    btn.onclick = () => btn.setAttribute("aria-expanded", String(btn.getAttribute("aria-expanded") !== "true"));
+  });
+
+  const retry = document.getElementById("retry");
+  if (retry) retry.onclick = () => startRound(missedIdx, true);
+  document.getElementById("again").onclick = () => startRound(allIndices(), false);
+  const copyBtn = document.getElementById("copy");
+  if (copyBtn) copyBtn.onclick = () => copyScore(copyBtn, score, total);
+
+  const numEl = document.getElementById("num");
+  if (!reduceMotion) {
+    let n = 0;
+    const timer = setInterval(() => {
+      if (!numEl.isConnected) { clearInterval(timer); return; }
+      numEl.textContent = n;
+      if (n >= score) {
+        clearInterval(timer);
+        const celebrate = practice ? score === total : score >= 8;
+        if (celebrate) burst(numEl, score === total ? 70 : 45);
+      }
+      n++;
+    }, 110);
+  }
+}
+
+renderIntro();
+</script>
+</body>
+</html>
